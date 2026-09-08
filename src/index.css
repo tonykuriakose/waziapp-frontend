@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #0f172a;
-  --surface: #1e293b;
-  --surface-border: #334155;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
-  --danger: #ef4444;
-  --danger-hover: #dc2828;
-  --success: #10b981;
-  --warning: #f59e0b;
+  --background: #fbfbfd;
+  --surface: #ffffff;
+  --surface-border: #d2d2d7;
+  --primary: #0071e3;
+  --primary-hover: #0077ed;
+  --text: #1d1d1f;
+  --text-muted: #86868b;
+  --danger: #ff3b30;
+  --danger-hover: #ff453a;
+  --success: #34c759;
+  --warning: #ff9f0a;
   --radius: 12px;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.5);
-  --font-sans: 'Inter', sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-glow: 0 4px 14px 0 rgba(0, 113, 227, 0.39);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -35,32 +35,33 @@ body {
 
 /* Utilities */
 .glass-panel {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #60a5fa, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 980px; /* Apple pill shape */
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
   font-family: var(--font-sans);
   gap: 0.5rem;
+  font-size: 0.95rem;
 }
 
 .btn-primary {
@@ -70,14 +71,13 @@ body {
 
 .btn-primary:hover {
   background-color: var(--primary-hover);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-1px);
+  transform: scale(1.02);
 }
 
 .btn-danger {
-  background-color: rgba(239, 68, 68, 0.1);
+  background-color: rgba(255, 59, 48, 0.1);
   color: var(--danger);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(255, 59, 48, 0.2);
 }
 
 .btn-danger:hover {
@@ -87,30 +87,30 @@ body {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--surface-border);
+  color: var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--surface-border);
-  color: var(--text);
+  background-color: var(--primary);
+  color: white;
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 8px;
   border: 1px solid var(--surface-border);
-  background-color: rgba(15, 23, 42, 0.5);
+  background-color: var(--surface);
   color: var(--text);
   font-family: var(--font-sans);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
 }
 
 .label {
