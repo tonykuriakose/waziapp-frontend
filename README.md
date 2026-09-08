@@ -7,17 +7,17 @@ It communicates with the Node.js backend using Axios and manages state using Red
 
 ```mermaid
 graph TD
-    User([👨‍💼 User]) -->|Interacts| UI[("⚛️ React UI (Vite)")]
-    UI --> State[("📦 Redux Toolkit (Auth State)")]
-    UI --> Query[("🔄 TanStack Query (Data Fetching)")]
+    User("👨‍💼 User") -->|"Interacts"| UI["⚛️ React UI (Vite)"]
+    UI --> State["📦 Redux Toolkit (Auth State)"]
+    UI --> Query["🔄 TanStack Query (Data Fetching)"]
     
     subgraph "Frontend Architecture"
-        State --> Axios[("🌐 Axios Interceptors")]
+        State --> Axios["🌐 Axios Interceptors"]
         Query --> Axios
-        Axios -->|Attaches JWT| API_Call[("📡 API Request")]
+        Axios -->|"Attaches JWT"| API_Call["📡 API Request"]
     end
     
-    API_Call -->|HTTPS| Backend[("☁️ Render Web Service (Backend)")]
+    API_Call -->|"HTTPS"| Backend["☁️ Render Web Service (Backend)"]
     Backend --> DB[("🗄️ PostgreSQL")]
 ```
 
