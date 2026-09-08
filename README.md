@@ -1,32 +1,52 @@
-# React + TypeScript + Vite
+# WaziApp Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the React (Vite) frontend for WaziApp, a multi-tenant project management SaaS. 
+It communicates with the Node.js backend using Axios and manages state using Redux Toolkit and TanStack Query.
 
-Currently, two official plugins are available:
+## System Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```mermaid
+graph TD
+    User([👨‍💼 User]) -->|Interacts| UI[("⚛️ React UI (Vite)")]
+    UI --> State[("📦 Redux Toolkit (Auth State)")]
+    UI --> Query[("🔄 TanStack Query (Data Fetching)")]
+    
+    subgraph "Frontend Architecture"
+        State --> Axios[("🌐 Axios Interceptors")]
+        Query --> Axios
+        Axios -->|Attaches JWT| API_Call[("📡 API Request")]
+    end
+    
+    API_Call -->|HTTPS| Backend[("☁️ Render Web Service (Backend)")]
+    Backend --> DB[("🗄️ PostgreSQL")]
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Features
+- **Apple-Inspired Design:** Clean, minimalist light theme with glassmorphism overlays.
+- **Authentication:** JWT-based login with persistent state.
+- **Role-Based Access Control:** UI elements (like "Create Project" or "Delete Project") conditionally render based on backend permissions.
+- **Optimistic UI:** Instant updates via TanStack Query mutations.
+
+## Getting Started
+
+1. Clone the repository and install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Configure environment variables in a `.env.local` file:
+   ```env
+   VITE_API_URL="http://localhost:5000/api"
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Production Deployment
+The application is configured to deploy directly to Vercel.
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- Environment variables required: `VITE_API_URL` (pointing to the live backend URL)
