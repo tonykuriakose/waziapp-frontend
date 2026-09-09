@@ -2,7 +2,7 @@ import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import loadingAnimation from '../assets/loading.json';
 
-const Loading = () => {
+const Loading = ({ message }: { message?: string }) => {
   return (
     <div style={{ 
       display: 'flex', 
