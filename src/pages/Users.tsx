@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../api/axios';
 import { useAuthPermissions } from '../store/hooks';
 import { UserPlus, ToggleLeft, ToggleRight } from 'lucide-react';
+import Loading from '../components/Loading';
 
 const Users = () => {
   const { hasPermission } = useAuthPermissions();
@@ -29,7 +30,7 @@ const Users = () => {
     toggleMutation.mutate(user);
   };
 
-  if (isLoading) return <div style={{ color: 'var(--text-muted)', padding: '2rem' }}>Loading users...</div>;
+  if (isLoading) return <Loading message="Loading users..." />;
 
   return (
     <div className="animate-fade-in">

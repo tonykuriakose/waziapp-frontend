@@ -4,6 +4,7 @@ import api from '../api/axios';
 import { useAuthPermissions } from '../store/hooks';
 import { Plus, Edit, Trash2, X } from 'lucide-react';
 import toast from 'react-hot-toast';
+import Loading from '../components/Loading';
 
 const Projects = () => {
   const { hasPermission } = useAuthPermissions();
@@ -98,7 +99,7 @@ const Projects = () => {
     setIsDeleteModalOpen(true);
   };
 
-  if (isLoading) return <div style={{ color: 'var(--text-muted)', padding: '2rem' }}>Loading projects...</div>;
+  if (isLoading) return <Loading message="Loading projects..." />;
   if (isError) return <div style={{ color: 'var(--danger)', padding: '2rem' }}>Failed to load projects.</div>;
 
   return (
@@ -179,7 +180,7 @@ const Projects = () => {
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto', background: 'var(--surface)' }}>
             <button 
               onClick={() => setIsModalOpen(false)}
               style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
@@ -227,7 +228,7 @@ const Projects = () => {
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto', background: 'var(--surface)' }}>
             <button 
               onClick={() => setIsEditModalOpen(false)}
               style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
@@ -275,7 +276,7 @@ const Projects = () => {
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '400px', padding: '2rem', position: 'relative', margin: 'auto', textAlign: 'center' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '400px', padding: '2rem', position: 'relative', margin: 'auto', textAlign: 'center', background: 'var(--surface)' }}>
             <h2 style={{ marginBottom: '1rem', color: 'var(--text)' }}>Delete Project?</h2>
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Are you sure you want to delete this project? This action cannot be undone.</p>
             
