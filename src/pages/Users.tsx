@@ -149,14 +149,17 @@ const Users = () => {
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       {hasPermission('users.update') && currentUser?.id !== user.id && (
                         <>
-                          <button 
-                            className="btn btn-secondary" 
-                            style={{ padding: '0.25rem 0.5rem', color: user.isActive ? 'var(--danger)' : 'var(--success)' }}
-                            onClick={() => toggleUserStatus(user)}
-                          >
-                            {user.isActive ? <ToggleLeft size={16} /> : <ToggleRight size={16} />}
-                            {user.isActive ? 'Disable' : 'Enable'}
-                          </button>
+                          {/* Super Admins can toggle anyone (except themselves, handled above). Admins can only toggle AGENTs */}
+                          {(currentUser?.role === 'SUPER_ADMIN' || user.role === 'AGENT') && (
+                            <button 
+                              className="btn btn-secondary" 
+                              style={{ padding: '0.25rem 0.5rem', color: user.isActive ? 'var(--danger)' : 'var(--success)' }}
+                              onClick={() => toggleUserStatus(user)}
+                            >
+                              {user.isActive ? <ToggleLeft size={16} /> : <ToggleRight size={16} />}
+                              {user.isActive ? 'Disable' : 'Enable'}
+                            </button>
+                          )}
                           
                           {currentUser?.role === 'SUPER_ADMIN' && user.role !== 'SUPER_ADMIN' && (
                             <button 

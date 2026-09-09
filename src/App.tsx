@@ -25,6 +25,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Toaster 
           position="top-right" 
+          containerStyle={{ zIndex: 99999 }}
           toastOptions={{
             style: {
               background: 'rgba(30, 41, 59, 0.9)',
