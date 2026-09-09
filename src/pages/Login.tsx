@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState('t4tonykuriakose@gmail.com');
-  const [password, setPassword] = useState('admin123');
+  const [password, setPassword] = useState('admin@123');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
@@ -62,7 +62,7 @@ const Login = () => {
               <input 
                 type={showPassword ? "text" : "password"}
                 className="input" 
-                placeholder="admin123"
+                placeholder="admin@123"
                 style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
