@@ -31,9 +31,11 @@ const Layout = () => {
     <div className="app-container">
       <nav className="sidebar">
         <div className="sidebar-header">
-          <h2 className="gradient-text" style={{ margin: 0 }}>WaziApp</h2>
-          <p className="label" style={{ marginTop: '0.25rem', marginBottom: 0 }}>
-            {user.role}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h2 className="gradient-text" style={{ margin: 0, fontSize: '1.8rem', letterSpacing: '-0.05em' }}>WaziApp</h2>
+          </div>
+          <p className="label" style={{ marginTop: '0.5rem', marginBottom: 0, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            {user.role} WORKSPACE
           </p>
         </div>
         

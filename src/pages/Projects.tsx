@@ -121,11 +121,11 @@ const Projects = () => {
         <div className="glass-panel" style={{ overflow: 'hidden' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--surface-border)', backgroundColor: 'rgba(0,0,0,0.02)' }}>
-                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 500 }}>Name</th>
-                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 500 }}>Address</th>
-                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 500 }}>Status</th>
-                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 500 }}>Actions</th>
+              <tr style={{ backgroundColor: 'transparent' }}>
+                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Name</th>
+                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Address</th>
+                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Status</th>
+                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -178,9 +178,10 @@ const Projects = () => {
       {isModalOpen && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
+          backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(8px)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto',
+          animation: 'fadeIn 0.2s ease-out'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto', background: 'var(--surface)' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2.5rem', position: 'relative', margin: 'auto', background: 'var(--surface)', borderRadius: '24px' }}>
             <button 
               onClick={() => setIsModalOpen(false)}
               style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
@@ -226,9 +227,10 @@ const Projects = () => {
       {isEditModalOpen && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
+          backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(8px)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto',
+          animation: 'fadeIn 0.2s ease-out'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem', position: 'relative', margin: 'auto', background: 'var(--surface)' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2.5rem', position: 'relative', margin: 'auto', background: 'var(--surface)', borderRadius: '24px' }}>
             <button 
               onClick={() => setIsEditModalOpen(false)}
               style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
@@ -274,9 +276,10 @@ const Projects = () => {
       {isDeleteModalOpen && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto'
+          backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(8px)', display: 'flex', zIndex: 9999, padding: '2rem', overflowY: 'auto',
+          animation: 'fadeIn 0.2s ease-out'
         }}>
-          <div className="glass-panel" style={{ width: '100%', maxWidth: '400px', padding: '2rem', position: 'relative', margin: 'auto', textAlign: 'center', background: 'var(--surface)' }}>
+          <div className="glass-panel" style={{ width: '100%', maxWidth: '400px', padding: '2.5rem', position: 'relative', margin: 'auto', textAlign: 'center', background: 'var(--surface)', borderRadius: '24px' }}>
             <h2 style={{ marginBottom: '1rem', color: 'var(--text)' }}>Delete Project?</h2>
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Are you sure you want to delete this project? This action cannot be undone.</p>
             
