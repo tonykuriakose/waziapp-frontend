@@ -14,7 +14,7 @@ graph TD
     subgraph "Frontend Architecture"
         State --> Axios["🌐 Axios Interceptors"]
         Query --> Axios
-        Axios -->|"Attaches JWT"| API_Call["📡 API Request"]
+        Axios -->|"Sends HttpOnly Cookie"| API_Call["📡 API Request"]
     end
     
     API_Call -->|"HTTPS"| Backend["☁️ Render Web Service (Backend)"]
@@ -22,8 +22,8 @@ graph TD
 ```
 
 ## Features
-- **Apple-Inspired Design:** Clean, minimalist light theme with glassmorphism overlays.
-- **Authentication:** JWT-based login with persistent state.
+
+- **Authentication:** Secure HttpOnly cookie-based login.
 - **Role-Based Access Control:** UI elements (like "Create Project" or "Delete Project") conditionally render based on backend permissions.
 - **Optimistic UI:** Instant updates via TanStack Query mutations.
 

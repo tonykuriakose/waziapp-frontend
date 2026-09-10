@@ -3,14 +3,21 @@ import { Outlet, Navigate, Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { logout } from '../store/authSlice';
 import { LayoutDashboard, Users, Key, LogOut } from 'lucide-react';
+import api from '../api/axios';
 
 const Layout = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
   const location = useLocation();
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    try {
+      await api.post('/auth/logout');
+    } catch (error) {
+      console.error('Failed to logout on server', error);
+    } finally {
+      dispatch(logout());
+    }
   };
 
   if (!user) {

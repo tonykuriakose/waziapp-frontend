@@ -10,7 +10,6 @@ export interface User {
 
 interface AuthState {
   user: User | null;
-  token: string | null;
   isAuthenticated: boolean;
 }
 
@@ -26,7 +25,6 @@ const loadStoredUser = (): User | null => {
     }
     // If invalid, clear it
     localStorage.removeItem('user');
-    localStorage.removeItem('token');
     return null;
   } catch {
     return null;
@@ -35,8 +33,7 @@ const loadStoredUser = (): User | null => {
 
 const initialState: AuthState = {
   user: loadStoredUser(),
-  token: localStorage.getItem('token') || null,
-  isAuthenticated: !!localStorage.getItem('token'),
+  isAuthenticated: !!loadStoredUser(),
 };
 
 const authSlice = createSlice({
@@ -45,21 +42,17 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ user: User; token: string }>
+      action: PayloadAction<{ user: User }>
     ) => {
-      const { user, token } = action.payload;
+      const { user } = action.payload;
       state.user = user;
-      state.token = token;
       state.isAuthenticated = true;
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', token);
     },
     logout: (state) => {
       state.user = null;
-      state.token = null;
       state.isAuthenticated = false;
       localStorage.removeItem('user');
-      localStorage.removeItem('token');
     },
   },
 });

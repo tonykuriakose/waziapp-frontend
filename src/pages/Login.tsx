@@ -20,7 +20,7 @@ const Login = () => {
 
     try {
       const response = await api.post('/auth/login', { email, password });
-      dispatch(setCredentials({ user: response.data.data.user, token: response.data.data.token }));
+      dispatch(setCredentials({ user: response.data.data.user }));
       toast.success('Successfully logged in!');
       navigate('/projects');
     } catch (err: any) {
